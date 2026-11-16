@@ -1,0 +1,8 @@
+name: hide-names
+version: '${version}'
+
+main: su.prismaworld.hideNames.HideNames
+api-version: '26.3'
+load: POSTWORLD
+
+authors: [ loseex ]
