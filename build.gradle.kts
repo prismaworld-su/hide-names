@@ -33,6 +33,11 @@ tasks {
         // Your plugin's jar (or shadowJar if present) will be used automatically.
         minecraftVersion("26.3")
         jvmArgs("-Xms2G", "-Xmx2G")
+
+        downloadPlugins {
+            modrinth("packetevents", "2.14.0+spigot")
+            modrinth("placeholderapi", "2.12.3")
+        }
     }
 
     processResources {
