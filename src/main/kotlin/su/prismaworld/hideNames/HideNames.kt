@@ -1,6 +1,8 @@
 package su.prismaworld.hideNames
 
 import org.bukkit.plugin.java.JavaPlugin
+import su.prismaworld.hideNames.listener.PlayerConnectionListener
+import su.prismaworld.hideNames.name.NameTagHider
 
 class HideNames : JavaPlugin() {
 
@@ -8,6 +10,8 @@ class HideNames : JavaPlugin() {
         lateinit var instance: HideNames
             private set
     }
+
+    private lateinit var nameTagHider: NameTagHider
 
     fun loadSettings() {
         saveDefaultConfig()
@@ -18,9 +22,18 @@ class HideNames : JavaPlugin() {
         instance = this
 
         loadSettings()
+
+        nameTagHider = NameTagHider().also { it.enable() }
+
+        server.pluginManager.registerEvents(PlayerConnectionListener(nameTagHider), this)
+
+        // Covers a reload of the plugin while players are online.
+        server.onlinePlayers.forEach(nameTagHider::hide)
     }
 
     override fun onDisable() {
-        // Plugin shutdown logic
+        if (::nameTagHider.isInitialized) {
+            nameTagHider.disable()
+        }
     }
 }
