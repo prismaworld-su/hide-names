@@ -7,10 +7,14 @@ plugins {
 repositories {
     mavenCentral()
     maven("https://repo.papermc.io/repository/maven-public/")
+    maven("https://repo.codemc.io/repository/maven-releases/")
+    maven("https://repo.extendedclip.com/releases/")
 }
 
 dependencies {
     compileOnly("io.papermc.paper:paper-api:26.3.build.+")
+    compileOnly("com.github.retrooper:packetevents-spigot:2.14.0")
+    compileOnly("me.clip:placeholderapi:2.12.3")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 }
 
