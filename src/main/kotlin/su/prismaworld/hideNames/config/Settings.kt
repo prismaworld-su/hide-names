@@ -7,11 +7,23 @@ import org.bukkit.configuration.file.FileConfiguration
  */
 data class Settings(
     val actionBarFormat: String,
+    val messages: Messages,
 ) {
+
+    data class Messages(
+        val espEnabled: String,
+        val espDisabled: String,
+        val playersOnly: String,
+    )
 
     companion object {
         fun load(config: FileConfiguration): Settings = Settings(
             actionBarFormat = config.string("action-bar-format"),
+            messages = Messages(
+                espEnabled = config.string("messages.esp-enabled"),
+                espDisabled = config.string("messages.esp-disabled"),
+                playersOnly = config.string("messages.players-only"),
+            ),
         )
 
         private fun FileConfiguration.string(path: String): String = getString(path).orEmpty()

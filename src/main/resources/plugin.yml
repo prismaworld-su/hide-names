@@ -7,4 +7,10 @@ load: POSTWORLD
 
 authors: [ loseex ]
 
+depend: [ packetevents ]
 softdepend: [ PlaceholderAPI ]
+
+permissions:
+  hidenames.esp:
+    description: Позволяет использовать /esp, чтобы видеть ники всех игроков.
+    default: op
