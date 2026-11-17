@@ -6,3 +6,5 @@ api-version: '26.3'
 load: POSTWORLD
 
 authors: [ loseex ]
+
+softdepend: [ PlaceholderAPI ]

@@ -1,0 +1,10 @@
+# Сообщение в action bar, которое видит игрок при нажатии ПКМ по другому игроку.
+# Формат — MiniMessage: https://docs.papermc.io/adventure/minimessage/format/
+#
+# Плейсхолдеры:
+#   %displayName%        — отображаемое имя игрока, по которому нажали;
+#   %<плейсхолдер>%      — любой плейсхолдер PlaceholderAPI, вычисляется для игрока, по которому нажали
+#                          (например, %player_name%, %vault_prefix%);
+#   %rel_<плейсхолдер>%  — относительный плейсхолдер PlaceholderAPI (нажавший игрок → игрок, по которому нажали).
+# Цветовые коды (&a, &#rrggbb), которые возвращают плейсхолдеры PlaceholderAPI, преобразуются автоматически.
+action-bar-format: "<gray>Игрок: <white>%displayName%"
