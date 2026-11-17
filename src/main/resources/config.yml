@@ -1,0 +1,17 @@
+# Сообщение в action bar, которое видит игрок при нажатии ПКМ по другому игроку.
+# Формат — MiniMessage: https://docs.papermc.io/adventure/minimessage/format/
+#
+# Плейсхолдеры:
+#   %displayName%        — отображаемое имя игрока, по которому нажали;
+#   %<плейсхолдер>%      — любой плейсхолдер PlaceholderAPI, вычисляется для игрока, по которому нажали
+#                          (например, %player_name%, %vault_prefix%);
+#   %rel_<плейсхолдер>%  — относительный плейсхолдер PlaceholderAPI (нажавший игрок → игрок, по которому нажали).
+# Цветовые коды (&a, &#rrggbb), которые возвращают плейсхолдеры PlaceholderAPI, преобразуются автоматически.
+action-bar-format: "<gray>Игрок: <white>%displayName%"
+
+# Сообщения плагина (формат MiniMessage).
+messages:
+  esp-enabled: "<green>Режим ESP включён: вы видите ники всех игроков."
+  esp-disabled: "<yellow>Режим ESP выключен: ники игроков снова скрыты."
+  players-only: "<red>Эту команду может выполнить только игрок."
+  reloaded: "<green>Конфигурация HideNames перезагружена."

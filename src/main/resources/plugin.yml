@@ -6,3 +6,14 @@ api-version: '26.3'
 load: POSTWORLD
 
 authors: [ loseex ]
+
+depend: [ packetevents ]
+softdepend: [ PlaceholderAPI ]
+
+permissions:
+  hidenames.esp:
+    description: Позволяет использовать /esp, чтобы видеть ники всех игроков.
+    default: op
+  hidenames.reload:
+    description: Позволяет перезагружать конфигурацию через /hidenames reload.
+    default: op
