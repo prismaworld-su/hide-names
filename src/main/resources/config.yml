@@ -14,3 +14,4 @@ messages:
   esp-enabled: "<green>Режим ESP включён: вы видите ники всех игроков."
   esp-disabled: "<yellow>Режим ESP выключен: ники игроков снова скрыты."
   players-only: "<red>Эту команду может выполнить только игрок."
+  reloaded: "<green>Конфигурация HideNames перезагружена."

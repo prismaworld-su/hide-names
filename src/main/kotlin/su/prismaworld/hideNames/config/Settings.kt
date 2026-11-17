@@ -14,6 +14,7 @@ data class Settings(
         val espEnabled: String,
         val espDisabled: String,
         val playersOnly: String,
+        val reloaded: String,
     )
 
     companion object {
@@ -23,6 +24,7 @@ data class Settings(
                 espEnabled = config.string("messages.esp-enabled"),
                 espDisabled = config.string("messages.esp-disabled"),
                 playersOnly = config.string("messages.players-only"),
+                reloaded = config.string("messages.reloaded"),
             ),
         )
 

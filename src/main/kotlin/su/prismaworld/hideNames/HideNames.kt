@@ -6,6 +6,7 @@ import com.github.retrooper.packetevents.event.PacketListenerPriority
 import io.papermc.paper.plugin.lifecycle.event.types.LifecycleEvents
 import org.bukkit.plugin.java.JavaPlugin
 import su.prismaworld.hideNames.command.EspCommand
+import su.prismaworld.hideNames.command.HideNamesCommand
 import su.prismaworld.hideNames.config.Settings
 import su.prismaworld.hideNames.esp.EspManager
 import su.prismaworld.hideNames.esp.EspTeamPacketListener
@@ -54,7 +55,9 @@ class HideNames : JavaPlugin() {
         server.pluginManager.registerEvents(PlayerInspectListener(this, formatter), this)
 
         lifecycleManager.registerEventHandler(LifecycleEvents.COMMANDS) { event ->
-            event.registrar().register(EspCommand(this, espManager).create(), "Показать или скрыть ники всех игроков")
+            val registrar = event.registrar()
+            registrar.register(EspCommand(this, espManager).create(), "Показать или скрыть ники всех игроков")
+            registrar.register(HideNamesCommand(this).create(), "Управление плагином HideNames")
         }
 
         // Covers a reload of the plugin while players are online.

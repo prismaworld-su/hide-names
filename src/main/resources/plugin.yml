@@ -14,3 +14,6 @@ permissions:
   hidenames.esp:
     description: Позволяет использовать /esp, чтобы видеть ники всех игроков.
     default: op
+  hidenames.reload:
+    description: Позволяет перезагружать конфигурацию через /hidenames reload.
+    default: op
