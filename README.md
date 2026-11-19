@@ -57,7 +57,7 @@ messages:
 | `%<placeholder>%` | Any PlaceholderAPI placeholder, resolved for the clicked player, e.g. `%player_name%` or `%vault_prefix%` |
 | `%rel_<placeholder>%` | Relational PlaceholderAPI placeholder between the clicking player and the clicked player |
 
-Legacy colour codes in placeholder values (`&a`, `§a`, `&#rrggbb`) are converted to MiniMessage colours. Placeholder values are inserted as plain components, so they cannot inject MiniMessage tags.
+Placeholder values may use MiniMessage styling tags (`<yellow>`, `<bold>`, `<gradient>` and others) and legacy colour codes (`&a`, `§a`, `&#rrggbb`), so a LuckPerms prefix such as `<yellow>⭐</yellow>` is shown in colour. Each value is parsed on its own, so it cannot break the rest of the message, and interactive tags such as `<click>` and `<hover>` in values stay plain text.
 
 ## How it works
 

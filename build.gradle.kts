@@ -16,6 +16,10 @@ dependencies {
     compileOnly("com.github.retrooper:packetevents-spigot:2.14.0")
     compileOnly("me.clip:placeholderapi:2.12.3")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
+
+    testImplementation("io.papermc.paper:paper-api:26.3.build.+")
+    testImplementation(kotlin("test"))
+    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
 
 kotlin {
@@ -25,6 +29,10 @@ kotlin {
 tasks {
     build {
         dependsOn(shadowJar)
+    }
+
+    test {
+        useJUnitPlatform()
     }
 
     runServer {
