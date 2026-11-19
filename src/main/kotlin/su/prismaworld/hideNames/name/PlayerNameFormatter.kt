@@ -5,15 +5,14 @@ import net.kyori.adventure.text.Component
 import net.kyori.adventure.text.minimessage.MiniMessage
 import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder
 import net.kyori.adventure.text.minimessage.tag.resolver.TagResolver
-import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer
 import org.bukkit.entity.Player
 
 /**
  * Renders a MiniMessage template that may contain `%displayName%` and PlaceholderAPI placeholders.
  *
- * Every placeholder value is inserted as a separate component instead of being pasted into the
- * template, so values can never inject MiniMessage tags, and legacy colour codes returned by
- * PlaceholderAPI expansions (`&a`, `§a`, `&#rrggbb`, `&x&r&r&g&g&b&b`) are rendered correctly.
+ * Every placeholder value is parsed on its own and inserted as a separate component instead of being
+ * pasted into the template, so a value cannot break the template. Values may use MiniMessage styling
+ * tags and legacy colour codes (`&a`, `§a`, `&#rrggbb`, `&x&r&r&g&g&b&b`), see [PlaceholderValue].
  */
 class PlayerNameFormatter(private val placeholderApiEnabled: Boolean) {
 
@@ -23,11 +22,6 @@ class PlayerNameFormatter(private val placeholderApiEnabled: Boolean) {
         const val TAG_PREFIX = "hidenames_placeholder_"
 
         val PLACEHOLDER = Regex("%([^%\\s]+)%")
-
-        val LEGACY: LegacyComponentSerializer = LegacyComponentSerializer.builder()
-            .character(LegacyComponentSerializer.AMPERSAND_CHAR)
-            .hexColors()
-            .build()
     }
 
     /**
@@ -62,6 +56,6 @@ class PlayerNameFormatter(private val placeholderApiEnabled: Boolean) {
         // Unknown placeholders are returned unchanged; keep them as plain text.
         if (value == placeholder) return null
 
-        return LEGACY.deserialize(value.replace(LegacyComponentSerializer.SECTION_CHAR, LegacyComponentSerializer.AMPERSAND_CHAR))
+        return PlaceholderValue.toComponent(value)
     }
 }
